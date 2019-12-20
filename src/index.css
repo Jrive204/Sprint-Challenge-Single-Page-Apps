@@ -12,6 +12,10 @@ main {
   background: #fff;
   padding: 15px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  /* background-image: url("./img/Rick-Morty-Hero.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: 1400px 100vh; */
 }
 
 .grid-view {
@@ -57,9 +61,31 @@ header h1 {
 .welcome-page {
   margin: 0;
   padding: 0;
-  height: 80vh;
+  height: 90vh;
+  width: 100%;
   font-family: sans-serif;
-  background-image: url("./img/Rick-Morty-Hero.png");
+  background-image: url("https://thumbs.gfycat.com/SafeRevolvingHagfish-size_restricted.gif");
   background-size: cover;
   /* background-attachment: fixed; */
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+/* .ui {
+  color: white;
+  margin: 0;
+  padding: 0;
+  height: 10vh;
+  font-family: sans-serif;
+} */
+.character-list {
+  background-image: url("./img/Rick-Morty-Hero.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: 1400px 100vh;
+}
+
+.head {
 }

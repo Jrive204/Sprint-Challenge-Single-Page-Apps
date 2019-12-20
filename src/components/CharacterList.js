@@ -51,15 +51,15 @@ export default function CharacterList(props) {
                     </h3>
                   </CardTitle>
                   <CardSubtitle>
-                    <li>Status:{e.status}</li>
+                    <li>Status: {e.status}</li>
                     <li>Gender: {e.gender}</li>
                   </CardSubtitle>
                 </CardBody>
                 <img width='100%' src={`${e.image}`} alt='Card image cap' />
                 <CardBody>
                   <CardText>
-                    <li>Place of origin:{e.origin.name}</li>
-                    <li>Current Known Location:{e.location.name}</li>
+                    <li>Place of origin: {e.origin.name}</li>
+                    <li>Current Known Location: {e.location.name}</li>
                   </CardText>
                   <CardLink href='#'>Card Link</CardLink>
                   <CardLink href='#'>Another Link</CardLink>
@@ -69,7 +69,7 @@ export default function CharacterList(props) {
           );
         });
         setCharlist(characters);
-        setlist(people.name);
+        setlist(people);
         console.log(characters, `test`);
       });
   }, [page]);
@@ -77,6 +77,10 @@ export default function CharacterList(props) {
   const [searchName, setSearchName] = useState(``);
   const [searchresults, setSearchResults] = useState([]);
   console.log(list, `checking list`);
+
+  // for (let obj of list) {
+  //   console.log(obj.name, `test`);
+  // }
 
   // useEffect(() => {
   //   const results = list.filter((character, i) =>
@@ -96,22 +100,11 @@ export default function CharacterList(props) {
     <section className='character-list'>
       <section className='search-form'>
         <div className='formsearchdiv' alt='Character Name Search Bar'>
-          <Form className='formsearch' inline>
-            <FormGroup className='mb-2 mr-sm-2 mb-sm-0'>
-              <Label for='search' className='mr-sm-2'></Label>
-              <Input
-                onChange={handlechange}
-                style={{ textAlign: `center` }}
-                type='text'
-                name='search'
-                id='inputbox'
-                placeholder='Search Name'
-              />
-            </FormGroup>
-            <Button onClick={clicksearch} href={`#${search}`}>
-              Submit
-            </Button>
-          </Form>
+          <SearchForm
+            clicksearch={clicksearch}
+            handlechange={handlechange}
+            searchName={searchName}
+            search={search}></SearchForm>
         </div>
         {/* <div className='searchResults'>
           {searchresults.map(char => (
