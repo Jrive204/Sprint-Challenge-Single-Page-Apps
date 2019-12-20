@@ -4,9 +4,8 @@ import CharacterList from "./CharacterList";
 
 export default function CharacterCard() {
   return (
-    <div>
+    <div style={{ paddingTop: `2%`, paddingBottom: `2%` }}>
       <CharacterList></CharacterList>
-    
     </div>
   );
 }

@@ -25,13 +25,14 @@ export default function CharacterList(props) {
         let people = response.data.results;
         console.log(`hello`, response.data.results);
         let characters = people.map(e => {
-          console.log(e.name);
           return (
             <div
               style={{
                 width: `100%`,
                 display: `flex`,
-                justifyContent: `center`
+                justifyContent: `center`,
+                paddingTop: `1%`,
+                paddingBottom: `1%`
               }}
               className='characters'>
               <Card style={{ textAlign: `center` }}>
@@ -44,7 +45,7 @@ export default function CharacterList(props) {
                     <li>Gender: {e.gender}</li>
                   </CardSubtitle>
                 </CardBody>
-                <img width='99%' src={`${e.image}`} alt='Card image cap' />
+                <img width='100%' src={`${e.image}`} alt='Card image cap' />
                 <CardBody>
                   <CardText>
                     <li>Place of origin:{e.origin.name}</li>
@@ -58,6 +59,7 @@ export default function CharacterList(props) {
           );
         });
         setCharlist(characters);
+        console.log(characters,`test`)
       });
   }, [page]);
 
