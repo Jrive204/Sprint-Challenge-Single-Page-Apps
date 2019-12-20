@@ -4,14 +4,21 @@ import axios from "axios";
 import { Card, Button, CardTitle, CardText, Form, CardImg } from "reactstrap";
 import CharacterList from "./components/CharacterList.js";
 import CharacterCard from "./components/CharacterCard.js";
+import { Router, Route, Link, Switch } from "react-router-dom";
+import WelcomePage from "./components/WelcomePage.js";
 
 export default function App() {
-  let axOne = `https://rickandmortyapi.com/api/character/?page=1`;
-
   return (
     <main>
       <Header />
-      <CharacterCard></CharacterCard>
+      <Switch>
+        <Route exact path='/'>
+          <WelcomePage></WelcomePage>
+        </Route>
+        <Route path='/Characters'>
+          <CharacterCard></CharacterCard>
+        </Route>
+      </Switch>
     </main>
   );
 }

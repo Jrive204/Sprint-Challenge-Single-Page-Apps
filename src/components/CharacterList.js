@@ -11,6 +11,7 @@ import {
   Form,
   CardImg
 } from "reactstrap";
+import Page from "./Page";
 
 export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
@@ -19,7 +20,7 @@ export default function CharacterList(props) {
 
   useEffect(() => {
     axios
-      .get(` https://rickandmortyapi.com/api/character/?page=${1}`)
+      .get(` https://rickandmortyapi.com/api/character/?page=${page}`)
       .then(response => {
         let people = response.data.results;
         console.log(`hello`, response.data.results);
@@ -58,11 +59,16 @@ export default function CharacterList(props) {
         });
         setCharlist(characters);
       });
-  }, []);
+  }, [page]);
 
   return (
     <section className='character-list'>
       <>{charlist}</>
+
+      <Page
+        pageprev={e => (page === 1 ? null : setPage(page - 1))}
+        page={page}
+        pagechangeradd={e => (page >= 50 ? null : setPage(page + 1))}></Page>
     </section>
   );
 }
