@@ -12,11 +12,11 @@ export default function App() {
     <main>
       <Header />
       <Switch>
-        <Route exact path='/'>
-          <WelcomePage></WelcomePage>
-        </Route>
         <Route path='/Characters'>
           <CharacterCard></CharacterCard>
+        </Route>
+        <Route exact path='/'>
+          <WelcomePage></WelcomePage>
         </Route>
       </Switch>
     </main>

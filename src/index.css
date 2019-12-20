@@ -7,7 +7,7 @@ body {
 main {
   width: 85vw;
   min-height: 80vh;
-  max-width: 1024px;
+  max-width: 1200px;
   margin: 35px auto;
   background: #fff;
   padding: 15px;
@@ -47,4 +47,19 @@ header h1 {
 
 .pagination-lg .page-link {
   background-color: rgb(51, 51, 51);
+}
+
+.Welcome-Button {
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+}
+.welcome-page {
+  margin: 0;
+  padding: 0;
+  height: 80vh;
+  font-family: sans-serif;
+  background-image: url("./img/Rick-Morty-Hero.png");
+  background-size: cover;
+  /* background-attachment: fixed; */
 }
