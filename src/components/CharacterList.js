@@ -4,15 +4,9 @@ import {
   Card,
   CardBody,
   CardSubtitle,
-  Button,
   CardLink,
   CardTitle,
-  CardText,
-  Form,
-  CardImg,
-  FormGroup,
-  Label,
-  Input
+  CardText
 } from "reactstrap";
 import Page from "./Page";
 import SearchForm from "./SearchForm";
@@ -21,8 +15,6 @@ export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
   const [charlist, setCharlist] = useState([]);
   const [page, setPage] = useState(1);
-  const [list, setlist] = useState(``);
-  const [search, setSearch] = useState(``);
   const [searchName, setSearchName] = useState(``);
 
   useEffect(() => {
@@ -30,47 +22,17 @@ export default function CharacterList(props) {
       .get(` https://rickandmortyapi.com/api/character/?page=${page}`)
       .then(response => {
         let people = response.data.results.filter(character =>
-          character.name.toLowerCase().includes(searchName.toLowerCase())
+          character.name.toLowerCase().includes(searchName.toLowerCase().trim())
         );
         console.log(people, `YOOO`);
         setCharlist(people);
-        // setlist(people);
       });
   }, [page, searchName]);
-  // console.log(charlist.name, `checking list`);
-  // console.log(charlist, `testing`);
 
   console.log(charlist, `checking results`);
 
-  // let x = [...charlist, charlist.name];
-  // console.log(x, `new x array`);
-
-  // let newlist = [];
-
-  // charlist.forEach(name => {
-  //   console.log(name, `foreach`);
-  // });
-
-  // let namesofchar = [];
-
-  // for (let obj of charlist) {
-  //   namesofchar.push(obj.name);
-  // }
-
-  // console.log(namesofchar, `please work`);
-
-  // useEffect(() => {
-  //   const results = namesofchar.filter(character =>
-  //     character.toLowerCase().includes(searchName.toLowerCase())
-  //   );
-  //   setSearchResults(results);
-  // }, [searchName]);
-
   const handlechange = event => {
     setSearchName(event.target.value);
-  };
-  const clicksearch = e => {
-    setSearch(search);
   };
 
   return (
@@ -78,10 +40,8 @@ export default function CharacterList(props) {
       <section className='search-form'>
         <div className='formsearchdiv' alt='Character Name Search Bar'>
           <SearchForm
-            clicksearch={clicksearch}
             handlechange={handlechange}
-            searchName={searchName}
-            search={search}></SearchForm>
+            searchName={searchName}></SearchForm>
         </div>
       </section>
 
@@ -97,7 +57,13 @@ export default function CharacterList(props) {
                 paddingBottom: `1%`
               }}
               className='characters'>
-              <Card style={{ textAlign: `center` }}>
+              <Card
+                style={{
+                  textAlign: `center`,
+                  width: `75%`,
+                  maxWidth: `400px`,
+                  display: `flex`
+                }}>
                 <CardBody>
                   <CardTitle>
                     <h3 id={e.name} key={e.name}>
