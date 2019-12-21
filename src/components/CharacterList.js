@@ -4,15 +4,9 @@ import {
   Card,
   CardBody,
   CardSubtitle,
-  Button,
   CardLink,
   CardTitle,
-  CardText,
-  Form,
-  CardImg,
-  FormGroup,
-  Label,
-  Input
+  CardText
 } from "reactstrap";
 import Page from "./Page";
 import SearchForm from "./SearchForm";
@@ -21,7 +15,6 @@ export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
   const [charlist, setCharlist] = useState([]);
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState(``);
   const [searchName, setSearchName] = useState(``);
 
   useEffect(() => {
@@ -29,7 +22,7 @@ export default function CharacterList(props) {
       .get(` https://rickandmortyapi.com/api/character/?page=${page}`)
       .then(response => {
         let people = response.data.results.filter(character =>
-          character.name.toLowerCase().includes(searchName.toLowerCase())
+          character.name.toLowerCase().includes(searchName.toLowerCase().trim())
         );
         console.log(people, `YOOO`);
         setCharlist(people);
@@ -41,19 +34,14 @@ export default function CharacterList(props) {
   const handlechange = event => {
     setSearchName(event.target.value);
   };
-  const clicksearch = () => {
-    setSearch(search);
-  };
 
   return (
     <section className='character-list'>
       <section className='search-form'>
         <div className='formsearchdiv' alt='Character Name Search Bar'>
           <SearchForm
-            clicksearch={clicksearch}
             handlechange={handlechange}
-            searchName={searchName}
-            search={search}></SearchForm>
+            searchName={searchName}></SearchForm>
         </div>
       </section>
 

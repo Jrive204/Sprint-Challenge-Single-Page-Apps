@@ -19,9 +19,6 @@ export default function SearchForm(props) {
             placeholder='Search Name'
           />
         </FormGroup>
-        <Button onClick={props.clicksearch} href={`#${props.search}`}>
-          Submit
-        </Button>
       </Form>
     </div>
   );
