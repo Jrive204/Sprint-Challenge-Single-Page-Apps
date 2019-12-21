@@ -23,16 +23,70 @@ export default function CharacterList(props) {
   const [page, setPage] = useState(1);
   const [list, setlist] = useState(``);
   const [search, setSearch] = useState(``);
+  const [searchName, setSearchName] = useState(``);
 
   useEffect(() => {
     axios
       .get(` https://rickandmortyapi.com/api/character/?page=${page}`)
       .then(response => {
-        let people = response.data.results;
+        let people = response.data.results.filter(character =>
+          character.name.toLowerCase().includes(searchName.toLowerCase())
+        );
+        console.log(people, `YOOO`);
+        setCharlist(people);
+        // setlist(people);
+      });
+  }, [page, searchName]);
+  // console.log(charlist.name, `checking list`);
+  // console.log(charlist, `testing`);
 
-        // console.log(`hello`, response.data.results[1].name);
-        // console.log(people[2].name, `twice`);
-        let characters = people.map(e => {
+  console.log(charlist, `checking results`);
+
+  // let x = [...charlist, charlist.name];
+  // console.log(x, `new x array`);
+
+  // let newlist = [];
+
+  // charlist.forEach(name => {
+  //   console.log(name, `foreach`);
+  // });
+
+  // let namesofchar = [];
+
+  // for (let obj of charlist) {
+  //   namesofchar.push(obj.name);
+  // }
+
+  // console.log(namesofchar, `please work`);
+
+  // useEffect(() => {
+  //   const results = namesofchar.filter(character =>
+  //     character.toLowerCase().includes(searchName.toLowerCase())
+  //   );
+  //   setSearchResults(results);
+  // }, [searchName]);
+
+  const handlechange = event => {
+    setSearchName(event.target.value);
+  };
+  const clicksearch = e => {
+    setSearch(search);
+  };
+
+  return (
+    <section className='character-list'>
+      <section className='search-form'>
+        <div className='formsearchdiv' alt='Character Name Search Bar'>
+          <SearchForm
+            clicksearch={clicksearch}
+            handlechange={handlechange}
+            searchName={searchName}
+            search={search}></SearchForm>
+        </div>
+      </section>
+
+      <>
+        {charlist.map(e => {
           return (
             <div
               style={{
@@ -67,53 +121,8 @@ export default function CharacterList(props) {
               </Card>
             </div>
           );
-        });
-        setCharlist(characters);
-        setlist(people);
-        console.log(characters, `test`);
-      });
-  }, [page]);
-  // console.log(charlist.name, `checking list`);
-  const [searchName, setSearchName] = useState(``);
-  const [searchresults, setSearchResults] = useState([]);
-  console.log(list, `checking list`);
-
-  // for (let obj of list) {
-  //   console.log(obj.name, `test`);
-  // }
-
-  // useEffect(() => {
-  //   const results = list.filter((character, i) =>
-  //     character.toLowerCase().includes(searchName.toLowerCase())
-  //   );
-  //   setSearchResults(results);
-  // }, [searchName]);
-
-  const handlechange = event => {
-    setSearch(event.target.value);
-  };
-  const clicksearch = e => {
-    setSearch(search);
-  };
-
-  return (
-    <section className='character-list'>
-      <section className='search-form'>
-        <div className='formsearchdiv' alt='Character Name Search Bar'>
-          <SearchForm
-            clicksearch={clicksearch}
-            handlechange={handlechange}
-            searchName={searchName}
-            search={search}></SearchForm>
-        </div>
-        {/* <div className='searchResults'>
-          {searchresults.map(char => (
-            <li key={char}>{char}</li>
-          ))}
-        </div> */}
-      </section>
-      <>{charlist}</>
-
+        })}
+      </>
       <Page
         pageprev={e => (page === 1 ? null : setPage(page - 1))}
         page={page}
