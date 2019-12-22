@@ -39,6 +39,7 @@ export default function CharacterList(props) {
     <section className='character-list'>
       <section className='search-form'>
         <div className='formsearchdiv' alt='Character Name Search Bar'>
+          &nbsp;
           <SearchForm
             handlechange={handlechange}
             searchName={searchName}></SearchForm>
@@ -75,7 +76,7 @@ export default function CharacterList(props) {
                     <li>Gender: {e.gender}</li>
                   </CardSubtitle>
                 </CardBody>
-                <img width='100%' src={`${e.image}`} alt='Card image cap' />
+                <img width='100%' src={`${e.image}`} alt='Character' />
                 <CardBody>
                   <CardText>
                     <li>Place of origin: {e.origin.name}</li>

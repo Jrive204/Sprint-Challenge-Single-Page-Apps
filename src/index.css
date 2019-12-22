@@ -65,8 +65,9 @@ header h1 {
   width: 100%;
   font-family: sans-serif;
   background-image: url("https://thumbs.gfycat.com/SafeRevolvingHagfish-size_restricted.gif");
-  background-size: cover;
+  background-size: contain;
   /* background-attachment: fixed; */
+  background-position: center;
 }
 
 .search-form {
