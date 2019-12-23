@@ -6,7 +6,7 @@ export default function WelcomePage() {
   return (
     <section className='welcome-page'>
       <header>
-        <h1 style={{ color: `yellow` }}>Welcome to the ultimate fan site!</h1>
+        <h1 style={{ color: `white` }}>Welcome to the ultimate fan site!</h1>
 
         <div className='Welcome-Button'>
           <Link to={"/Characters"}>
