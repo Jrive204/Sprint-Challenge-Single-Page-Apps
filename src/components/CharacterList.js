@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   Card,
   CardBody,
@@ -7,9 +7,9 @@ import {
   CardLink,
   CardTitle,
   CardText
-} from "reactstrap";
-import Page from "./Page";
-import SearchForm from "./SearchForm";
+} from 'reactstrap';
+import Page from './Page';
+import SearchForm from './SearchForm';
 
 export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
@@ -19,7 +19,7 @@ export default function CharacterList(props) {
 
   useEffect(() => {
     axios
-      .get(` https://rickandmortyapi.com/api/character/?page=${page}`)
+      .get(`https://rickandmortyapi.com/api/character/?page=${page}`)
       .then(response => {
         let people = response.data.results.filter(character =>
           character.name.toLowerCase().includes(searchName.toLowerCase().trim())
@@ -40,9 +40,7 @@ export default function CharacterList(props) {
       <section className='search-form'>
         <div className='formsearchdiv' alt='Character Name Search Bar'>
           &nbsp;
-          <SearchForm
-            handlechange={handlechange}
-            searchName={searchName}></SearchForm>
+          <SearchForm handlechange={handlechange}></SearchForm>
         </div>
       </section>
 

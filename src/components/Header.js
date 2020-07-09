@@ -18,8 +18,7 @@ export default function Header() {
               display: `flex`
               // position: `absolute`
             }}
-            src='        https://image-cdn.neatoshop.com/styleimg/63616/none/black/default/363650-20;1505599358t.jpg
-              '
+            src={require("../img/1581811f50eb73c1060ffd3dee554b6b.jpg")}
           />
         </div>
         <h1 className='ui center'>Rick &amp; Morty Fan Page</h1>
